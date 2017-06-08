@@ -5,16 +5,6 @@ require_once('header.php');
 
 <main class="container">
     <h1>Albums</h1>
-
-    <?php
-        //start a session (already happened in header.php)
-
-        //validate if the user is active
-        if (!empty($_SESSION['email']))
-            echo '<a href="AlbumDetails.php">Add a new Album</a>';
-    ?>
-
-
     <?php
 
         //step 1 - connect to the database

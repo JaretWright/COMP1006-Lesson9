@@ -12,6 +12,26 @@
     $year = $_POST['year'];
     $artist = $_POST['artist'];
     $genre = $_POST['genre'];
+    $coverFileName = $_FILES['coverFile']['name'];
+    $coverFileType = $_FILES['coverFile']['type'];
+    $coverFileTmpLocation = $_FILES['coverFile']['tmp_name'];
+
+    echo 'File name:'.$coverFileName.'<br />';
+    echo 'File type:'.$coverFileType.'<br />';
+    echo 'File temp name:'.$coverFileTmpLocation.'<br />';
+    echo 'The real file type is: '.mime_content_type($coverFileTmpLocation);
+
+    //store our cover image file
+    $validFileTypes = ['jpg','png','svg',gif];
+    $fileType = mime_content_type($coverFileTmpLocation);
+    $fileType = substr($fileType, 6, 3);
+
+    if (in_array($fileType, $validFileTypes))
+    {
+        $fileName = "uploads/"."-$coverFileName";
+        move_uploaded_file($coverFileTmpLocation, $fileName);
+    }
+
 
     //step 1 - connect to the database
     require_once ('db.php');
@@ -47,7 +67,7 @@
     $conn = null;
 
     //step 6 - redirect to the albums page
-    header('location:albums.php');
+    //header('location:albums.php');
 ?>
 </body>
 

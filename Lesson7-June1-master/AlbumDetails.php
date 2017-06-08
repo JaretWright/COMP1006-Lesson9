@@ -38,27 +38,27 @@
             }
         ?>
 
-        <form method="post" action="saveAlbum.php">
+        <form method="post" action="saveAlbum.php" enctype="multipart/form-data">
             <fieldset class="form-group">
-                <label for="title" class="col-sm-1">Title: *</label>
+                <label for="title" class="col-sm-2">Title: *</label>
                 <input name="title" id="title" required placeholder="Album title"
                     value="<?php echo $title?>"/>
             </fieldset>
 
             <fieldset class="form-group">
-                <label for="year" class="col-sm-1">Year:</label>
+                <label for="year" class="col-sm-2">Year:</label>
                 <input name="year" id="year" type="number" min="1900" placeholder="Release Year"
                     value="<?php echo $year ?>"/>
             </fieldset>
 
             <fieldset class="form-group">
-                <label for="artist" class="col-sm-1">Artist: *</label>
+                <label for="artist" class="col-sm-2">Artist: *</label>
                 <input name="artist" id="artist" required placeholder="Artist Name"
                     value="<?php echo $artist ?>"/>
             </fieldset>
 
-            <fieldset>
-                <label for="genre" class="col-sm-1">Genre: *</label>
+            <fieldset class="form-group">
+                <label for="genre" class="col-sm-2">Genre: *</label>
                 <select name="genre" id="genre">
                     <?php
                         //Step 1 - connect to the DB
@@ -92,9 +92,14 @@
                     ?>
                 </select>
             </fieldset>
-            <input name="albumID" id="albumID" value="<?php echo $albumID?>" type="hidden"/>
-            <button class="btn btn-success col-sm-offset-1">Save</button>
 
+            <fieldset class="form-group">
+                <label for="coverFile" class="col-sm-2">Cover Image</label>
+                <input name="coverFile" id="coverFile" type="file"/>
+            </fieldset>
+
+            <input name="albumID" id="albumID" value="<?php echo $albumID?>" type="hidden"/>
+            <button class="btn btn-success col-sm-offset-2">Save</button>
 
         </form>
 
