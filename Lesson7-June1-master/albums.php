@@ -7,8 +7,7 @@ require_once('header.php');
     <h1>Albums</h1>
 
     <?php
-        //start a session
-        session_start();
+        //start a session (already happened in header.php)
 
         //validate if the user is active
         if (!empty($_SESSION['email']))

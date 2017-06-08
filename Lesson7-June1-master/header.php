@@ -15,10 +15,25 @@
 
 <nav class="nav navbar-inverse">
     <ul class="nav navbar-nav">
+        <li><a href="default.php" class="navbar-brand">COMP1006-Music Library</a></li>
         <li><a href="albums.php">Albums</a></li>
-        <li><a href="AlbumDetails.php">Album Details</a></li>
-        <li><a href="registration.php">Register</a></li>
-        <li><a href="login.php">Login</a></li>
-        <li><a href="logout.php">Logout</a></li>
+
+        <?php
+        session_start();
+
+        //public (not logged in) links
+        if (empty($_SESSION['email']))
+        {
+            echo '<li><a href="registration.php">Register</a></li>
+                  <li><a href="login.php">Login</a></li>';
+        }
+
+        //private / logged in links
+        else
+        {
+            echo '<li><a href="AlbumDetails.php">Add new album</a></li>
+                  <li><a href="logout.php">Logout</a></li>';
+        }
+        ?>
     </ul>
 </nav>
